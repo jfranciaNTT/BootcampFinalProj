@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <title>Create New Aula</title>
+</head>
+<body>
+<div align="center">
+  <h1>Create New Aula</h1>
+  <br />
+  <form action="#" th:action="@{/saveAula}" th:object="${aula}"
+        method="post">
+
+    <table border="0" cellpadding="10">
+      <tr>
+        <td>NIF Professor:</td>
+        <td><input type="text" th:field="*{professorNif}" /></td>
+      </tr>
+      <tr>
+        <td>NIF Aluno:</td>
+        <td><input type="text" th:field="*{alunoNif}" /></td>
+      </tr>
+      <tr>
+        <td>Data:</td>
+        <td><input type="text" th:field="*{data}" /></td>
+      </tr>
+      <tr>
+        <td>Duração:</td>
+        <td><input type="text" th:field="*{duracao}" /></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button type="submit">Save</button> </td>
+      </tr>
+    </table>
+    <br/>
+    <a href="/aula">Cancelar</a>
+  </form>
+</div>
+</body>
+</html>

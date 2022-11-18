@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Gestão Professores</title>
+</head>
+<body>
+<div align="center">
+  <h1>Lista Professores</h1>
+  <a href="/newProfessor">Create New Professor</a>
+  <br/><br/>
+  <table border="1" cellpadding="10">
+    <thead>
+    <tr>
+      <th>NIF</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Tempo Ensino</th>
+      <th>Salário</th>
+      <th>Disciplina</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="professor : ${listProfessores}">
+      <td th:text="${professor.nifProfessor}">NIF</td>
+      <td th:text="${professor.nomeProfessor}">Nome</td>
+      <td th:text="${professor.idadeProfessor}">Idade</td>
+      <td th:text="${professor.tempoEnsino}">Tempo Ensino</td>
+      <td th:text="${professor.salario}">Salário</td>
+      <td th:text="${professor.disciplinaId}">Disciplina</td>
+      <td>
+        <a th:href="@{'/editProfessor/' + ${professor.nifProfessor}}">Editar</a>
+        &nbsp;&nbsp;&nbsp;
+        <a th:href="@{'/deleteProfessor/' + ${professor.nifProfessor}}">Apagar</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <br/>
+  <a href="/homepage">Homepage</a>
+</div>
+</body>
+</html>

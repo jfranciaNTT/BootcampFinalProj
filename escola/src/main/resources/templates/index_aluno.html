@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Gestão Alunos</title>
+</head>
+<body>
+<div align="center">
+  <h1>Lista Alunos</h1>
+  <a href="/newAluno">Create New Aluno</a>
+  <br/><br/>
+  <table border="1" cellpadding="10">
+    <thead>
+    <tr>
+      <th>NIF</th>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Escolaridade</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="aluno : ${listAlunos}">
+      <td th:text="${aluno.nif}">NIF</td>
+      <td th:text="${aluno.nome}">Nome</td>
+      <td th:text="${aluno.idade}">Idade</td>
+      <td th:text="${aluno.escolaridade}">Escolaridade</td>
+      <td>
+        <a th:href="@{'/editAluno/' + ${aluno.nif}}">Editar</a>
+        &nbsp;&nbsp;&nbsp;
+        <a th:href="@{'/deleteAluno/' + ${aluno.nif}}">Apagar</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <br/>
+  <a href="/homepage">Homepage</a>
+</div>
+</body>
+</html>
