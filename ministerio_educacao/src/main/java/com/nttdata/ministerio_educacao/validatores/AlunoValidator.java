@@ -14,7 +14,6 @@ public class AlunoValidator {
 
     public Aluno validaAluno(Aluno aluno) {
         if (aluno.getIdade() - aluno.getEscolaridade() != 5){
-            repository.delete(aluno);
             return null;
         }
         return aluno;

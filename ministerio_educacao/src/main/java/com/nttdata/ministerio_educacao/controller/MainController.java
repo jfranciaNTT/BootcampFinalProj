@@ -18,17 +18,18 @@ public class MainController {
     private DisciplinaService disciplinaService;
 
     @RequestMapping(path = "/disciplina", method = RequestMethod.GET)
-    public List<Disciplina> getAllDisciplinas(){
+    public List<Disciplina> getAllDisciplinas() {
         return disciplinaService.getAllDisciplinas();
     }
 
-   /* @RequestMapping(path = "/postAluno/{id}", method = RequestMethod.POST)
-    public Aluno postAluno(@RequestBody Aluno aluno){
-        return alunoService.postAluno(aluno);
-    }*/
+    @RequestMapping(path = "/postAluno/", method = RequestMethod.POST)
+    public Aluno postAluno(@RequestBody Aluno aluno) {
+        return alunoService.validaAluno(aluno);
+    }
+}
 
-    @RequestMapping(path = "/getAluno/{id}", method = RequestMethod.GET)
+    /*@RequestMapping(path = "/postAluno/{id}", method = RequestMethod.POST)
     public Aluno validaAluno(@PathVariable Long id){
         return alunoService.validaAluno(alunoService.findById(id));
     }
-}
+}*/

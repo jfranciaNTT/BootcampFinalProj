@@ -1,7 +1,11 @@
 package com.nttdata.escola.controller;
 
+import com.nttdata.escola.model.Aluno;
 import com.nttdata.escola.model.Aula;
+import com.nttdata.escola.model.Professor;
+import com.nttdata.escola.service.AlunoService;
 import com.nttdata.escola.service.AulaService;
+import com.nttdata.escola.service.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +19,21 @@ public class AulaController {
     @Autowired
     private AulaService aulaService;
 
+    @Autowired
+    private ProfessorService professorService;
+
+    @Autowired
+    private AlunoService alunoService;
+
 
     @RequestMapping("/newAula")
-    public String showNewAulaPage(Model model) {
+    public String showNewAulaPage(Model modelAula, Model modelProfessor, Model modelAluno) {
         Aula aula = new Aula();
-        model.addAttribute("aula", aula);
-
+        modelAula.addAttribute("aula", aula);
+        List<Professor> professorList = professorService.listAll();
+        modelProfessor.addAttribute("professorList", professorList);
+        List<Aluno> alunoList = alunoService.listAll();
+        modelAluno.addAttribute("alunoList", alunoList);
         return "new_aula";
     }
 
@@ -32,10 +45,14 @@ public class AulaController {
     }
 
     @RequestMapping("/editAula/{aulaId}")
-    public ModelAndView showEditAulaPage(@PathVariable(name = "aulaId") int id) {
+    public ModelAndView showEditAulaPage(@PathVariable(name = "aulaId") int id, Model modelProfessor, Model modelAluno) {
         ModelAndView mav = new ModelAndView("edit_aula");
         Aula aula = aulaService.get(id);
         mav.addObject("aula", aula);
+        List<Professor> professorList = professorService.listAll();
+        modelProfessor.addAttribute("professorList", professorList);
+        List<Aluno> alunoList = alunoService.listAll();
+        modelAluno.addAttribute("alunoList", alunoList);
 
         return mav;
     }

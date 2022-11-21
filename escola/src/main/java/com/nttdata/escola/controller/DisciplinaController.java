@@ -43,9 +43,11 @@ public class DisciplinaController {
 
     @RequestMapping("/deleteDisciplina/{disciplinaId}")
     public String deleteDisciplina(@PathVariable(name = "disciplinaId") int id) {
-        disciplinaService.delete(id);
+        disciplinaService.delete(disciplinaService.get(id));
         return "redirect:/disciplina";
     }
+
+
 
     @RequestMapping("/disciplina")
     public String viewAllDisciplinas(Model model) {
