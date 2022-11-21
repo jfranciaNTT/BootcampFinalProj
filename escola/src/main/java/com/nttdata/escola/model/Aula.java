@@ -1,15 +1,19 @@
 package com.nttdata.escola.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "aula")
 public class Aula {
@@ -23,16 +27,10 @@ public class Aula {
     @ManyToOne
     @JoinColumn(name = "aluno_nif")
     private Aluno alunoNif;
-    private Date data;
-    private Double duracao;
 
-    public Aula(Long id, Professor professorNif, Aluno alunoNif, Date data, Double duracao) {
-        this.aulaId = id;
-        this.professorNif = professorNif;
-        this.alunoNif = alunoNif;
-        this.data = data;
-        this.duracao = duracao;
-    }
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate data;
+    private Double duracao;
 
     @Override
     public String toString() {

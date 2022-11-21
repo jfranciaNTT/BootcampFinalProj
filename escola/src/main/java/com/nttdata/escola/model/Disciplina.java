@@ -1,5 +1,6 @@
 package com.nttdata.escola.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "disciplina")
 public class Disciplina {
@@ -19,18 +21,8 @@ public class Disciplina {
     private String nomeDisciplina;
     private String area;
 
-    public Disciplina(Long id, String nome, String area) {
-        this.disciplinaId = id;
-        this.nomeDisciplina = nome;
-        this.area = area;
-    }
-
     @Override
     public String toString() {
-        return "Disciplina{" +
-                "id=" + disciplinaId +
-                ", nome='" + nomeDisciplina + '\'' +
-                ", area='" + area + '\'' +
-                '}';
+        return nomeDisciplina;
     }
 }

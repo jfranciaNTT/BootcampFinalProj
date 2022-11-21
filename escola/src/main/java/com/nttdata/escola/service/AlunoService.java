@@ -23,8 +23,20 @@ public class AlunoService  {
     }
 
     public boolean save(Aluno aluno) {
+        if (repo.findById(aluno.getNif()).isPresent())
+        {
+            return false;
+        }
             repo.save(aluno);
-            return valid.validarAluno(aluno.getNif());
+            if (valid.validarAluno(aluno))
+            {
+                return true;
+            }
+            else
+            {
+                repo.delete(aluno);
+                return false;
+            }
     }
 
     public Aluno get(long id) {
@@ -35,4 +47,15 @@ public class AlunoService  {
         repo.deleteById(id);
     }
 
+    public boolean edit(Aluno aluno) {
+        if (valid.validarAluno(aluno))
+        {
+            repo.save(aluno);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

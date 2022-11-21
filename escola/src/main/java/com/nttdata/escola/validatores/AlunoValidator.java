@@ -33,7 +33,7 @@ public class AlunoValidator {
 
     public boolean validarAluno(Aluno aluno)  {
 
-        aluno = webClient.post().uri("/getAluno/" + aluno).contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromObject(aluno)).retrieve().bodyToMono(Aluno.class).block();
+        aluno = webClient.post().uri("/postAluno/").contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromObject(aluno)).retrieve().bodyToMono(Aluno.class).block();
 
         if (aluno != null){
             return true;

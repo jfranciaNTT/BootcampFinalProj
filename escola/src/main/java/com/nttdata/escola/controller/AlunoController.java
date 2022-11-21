@@ -36,12 +36,21 @@ public class AlunoController {
         }
     }
 
+    @RequestMapping(value = "/editAluno", method = RequestMethod.POST)
+    public String editAluno(@ModelAttribute("aluno") Aluno aluno) {
+        if (alunoService.edit(aluno)) {
+            return "redirect:/aluno";
+        }
+        else {
+            return "new_aluno_invalido";
+        }
+    }
+
     @RequestMapping("/editAluno/{nif}")
     public ModelAndView showEditAlunoPage(@PathVariable(name = "nif") long nif) {
         ModelAndView mav = new ModelAndView("edit_aluno");
         Aluno aluno = alunoService.get(nif);
         mav.addObject("aluno", aluno);
-
         return mav;
     }
 

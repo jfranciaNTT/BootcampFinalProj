@@ -27,11 +27,6 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "Aluno{" +
-                "nif=" + nif +
-                ", nome='" + nome + '\'' +
-                ", idade=" + idade +
-                ", escolaridade='" + escolaridade + '\'' +
-                '}';
+        return nome;
     }
 }

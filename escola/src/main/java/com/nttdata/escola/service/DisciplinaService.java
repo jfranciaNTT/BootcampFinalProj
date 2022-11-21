@@ -25,7 +25,7 @@ public class DisciplinaService {
         return repo.findById(id).get();
     }
 
-    public void delete(long id) {
-        repo.deleteById(id);
+    public void delete(Disciplina disciplina) {
+        repo.delete(disciplina);
     }
 }
